@@ -1,16 +1,31 @@
-# React + Vite
+# Password Strength Meter
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Instalación
 
-Currently, two official plugins are available:
+npm install
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Correr tests
 
-## React Compiler
+npm test
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Correr con coverage
 
-## Expanding the ESLint configuration
+npm run test:coverage
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Modo desarrollo
+
+npm run dev
+
+## Flujo TDD seguido
+
+1. Se configuró el proyecto con Vite + Vitest + React Testing Library.
+2. Se escribieron todos los tests primero, cubriendo renderizado, comportamiento y edge cases.
+3. Se hizo commit con los tests fallando (fase roja).
+4. Se implementó la lógica pura en `passwordStrength.js` y el componente `PasswordStrengthMeter.jsx`.
+5. Se verificó que todos los tests pasaran (fase verde).
+6. Se refactorizó manteniendo los tests en verde.
+
+## Arquitectura
+
+- `src/utils/passwordStrength.js` — lógica pura, sin dependencias de React.
+- `src/components/PasswordStrengthMeter.jsx` — componente que usa la lógica.
