@@ -4,7 +4,6 @@ import userEvent from '@testing-library/user-event'
 import PasswordStrengthMeter from './PasswordStrengthMeter'
 
 describe('PasswordStrengthMeter', () => {
-  // Tests de renderizado
   it('renderiza un input de tipo password', () => {
     render(<PasswordStrengthMeter />)
     const input = screen.getByLabelText(/contraseña/i)
@@ -17,7 +16,6 @@ describe('PasswordStrengthMeter', () => {
     expect(screen.getByText('vacía')).toBeInTheDocument()
   })
 
-  // Tests de comportamiento
   it('muestra "débil" al escribir una contraseña corta', async () => {
     const user = userEvent.setup()
     render(<PasswordStrengthMeter />)
@@ -55,7 +53,6 @@ describe('PasswordStrengthMeter', () => {
     expect(screen.getByText('vacía')).toBeInTheDocument()
   })
 
-  // Tests de edge cases
   it('exactamente 8 caracteres sin números no debe ser "débil"', async () => {
     const user = userEvent.setup()
     render(<PasswordStrengthMeter />)
@@ -77,10 +74,9 @@ describe('PasswordStrengthMeter', () => {
     expect(screen.getByText('débil')).toBeInTheDocument()
   })
 
-  // Punto extra: accesibilidad
   it('el input es accesible por rol y label', () => {
     render(<PasswordStrengthMeter />)
-    const input = screen.getByRole('textbox', { hidden: true }) || screen.getByLabelText(/contraseña/i)
+    const input = screen.getByLabelText(/contraseña/i)
     expect(input).toBeInTheDocument()
   })
 })
